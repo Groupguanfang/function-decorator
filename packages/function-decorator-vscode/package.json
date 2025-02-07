@@ -2,7 +2,7 @@
   "publisher": "NailyZero",
   "name": "vscode-naily-function-decorator",
   "displayName": "Naily's Function Decorator Support",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "description": "忽略ts2306错误,支持函数装饰器。",
   "repository": {
