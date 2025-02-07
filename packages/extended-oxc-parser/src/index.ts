@@ -1,9 +1,9 @@
-export { enhanceProgram, type EnhancedProgramResult } from './enhancer'
+export { type EnhancedProgramResult, enhanceProgram } from './enhancer'
+export { transformFnDecoratorProgram } from './transformer'
 export {
-  deepWalk as walk,
-  type Visitors,
   deepRemovePosition,
   type DeepRemovePositionResult,
   getPreviousNodes,
+  type Visitors,
+  deepWalk as walk,
 } from './walk'
-export { transformFnDecoratorProgram } from './transformer'

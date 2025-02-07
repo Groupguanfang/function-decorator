@@ -4,15 +4,6 @@
   "version": "0.0.1",
   "description": "Add function decorator support to OxC Parser.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
-  "keywords": [
-    "function-decorator",
-    "oxc-parser",
-    "oxc-project"
-  ],
-  "bugs": {
-    "url": "https://github.com/groupguanfang/function-decorator/issues",
-    "email": "zero@naily.cc"
-  },
   "license": "MIT",
   "homepage": "https://github.com/groupguanfang/function-decorator",
   "repository": {
@@ -20,8 +11,17 @@
     "url": "https://github.com/groupguanfang/function-decorator.git",
     "directory": "packages/extended-oxc-parser"
   },
+  "bugs": {
+    "url": "https://github.com/groupguanfang/function-decorator/issues",
+    "email": "zero@naily.cc"
+  },
+  "keywords": [
+    "function-decorator",
+    "oxc-parser",
+    "oxc-project"
+  ],
   "exports": {
-    "./index": {
+    ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
@@ -39,7 +39,7 @@
     "access": "public"
   },
   "dependencies": {
-    "oxc-parser": "^0.48.2",
-    "magic-string": "^0.30.17"
+    "magic-string": "^0.30.17",
+    "oxc-parser": "^0.48.2"
   }
 }
