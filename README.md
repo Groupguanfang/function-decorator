@@ -1,3 +1,3 @@
-# 我的项目
+# Function Decorator
 
-> 这是一个使用 es-project 创建的 monorepo 项目。
+这是一个用于给现有的TypeScript添加`函数装饰器`支持的仓库。
