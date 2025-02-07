@@ -1,17 +1,20 @@
 {
   "name": "@function-decorator/unplugin",
   "type": "module",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "packageManager": "pnpm@9.9.0",
   "description": "Function decorator polyfill for vite, rollup, rolldown, webpack and more.",
+  "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "license": "MIT",
-  "homepage": "https://github.com/antfu/unplugin-starter#readme",
+  "homepage": "https://github.com/Groupguanfang/function-decorator",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antfu/unplugin-starter.git"
+    "url": "git+https://github.com/Groupguanfang/function-decorator.git",
+    "directory": "packages/unplugin"
   },
   "bugs": {
-    "url": "https://github.com/antfu/unplugin-starter/issues"
+    "url": "https://github.com/Groupguanfang/function-decorator/issues",
+    "email": "zero@naily.cc"
   },
   "keywords": [
     "unplugin",
