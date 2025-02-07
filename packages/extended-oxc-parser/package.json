@@ -2,10 +2,12 @@
   "name": "@function-decorator/oxc-parser",
   "type": "module",
   "version": "0.0.1",
-  "description": "",
+  "description": "Add function decorator support to OxC Parser.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "keywords": [
-    "es-project-template"
+    "function-decorator",
+    "oxc-parser",
+    "oxc-project"
   ],
   "exports": {
     "./index": {
@@ -19,7 +21,8 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
-    "watch": "tsup -w"
+    "watch": "tsup -w",
+    "prepublishOnly": "tsup"
   },
   "publishConfig": {
     "access": "public"

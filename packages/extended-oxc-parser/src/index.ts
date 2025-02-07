@@ -6,3 +6,4 @@ export {
   type DeepRemovePositionResult,
   getPreviousNodes,
 } from './walk'
+export { transformFnDecoratorProgram } from './transformer'
