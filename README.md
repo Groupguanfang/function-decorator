@@ -38,7 +38,7 @@ interface FunctionDecoratorContext {
   name: string
   // 被装饰的函数的元数据
   metadata: object
-  // 添加初始化器, 这个虽然可以调用，但是`暂不支持!!`
+  // 添加初始化器，将在被装饰函数调用前调用
   addInitializer: (initializer: () => void) => void
 }
 
