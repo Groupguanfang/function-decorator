@@ -9,6 +9,17 @@
     "oxc-parser",
     "oxc-project"
   ],
+  "bugs": {
+    "url": "https://github.com/groupguanfang/function-decorator/issues",
+    "email": "zero@naily.cc"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/groupguanfang/function-decorator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupguanfang/function-decorator.git",
+    "directory": "packages/extended-oxc-parser"
+  },
   "exports": {
     "./index": {
       "types": "./dist/index.d.ts",
