@@ -16,6 +16,9 @@
     "url": "https://github.com/Groupguanfang/function-decorator/issues",
     "email": "zero@naily.cc"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "unplugin",
     "vite",
