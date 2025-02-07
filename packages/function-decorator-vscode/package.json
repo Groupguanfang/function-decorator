@@ -1,0 +1,45 @@
+{
+  "publisher": "NailyZero",
+  "name": "vscode-naily-function-decorator",
+  "displayName": "Naily's Function Decorator Support",
+  "version": "0.0.1",
+  "private": true,
+  "description": "忽略ts2306错误,支持函数装饰器。",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Groupguanfang/arkTS",
+    "directory": "packages/vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/Groupguanfang/arkTS/issues",
+    "email": "zero@naily.cc"
+  },
+  "keywords": [
+    "function-decorator"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/client.js",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "activationEvents": [],
+  "contributes": {
+    "typescriptServerPlugins": [
+      {
+        "name": "@function-decorator/ts-plugin-function-decorator",
+        "enableForWorkspaceTypeScriptVersions": true
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node scripts/build -- --minify",
+    "watch": "npm run build -- --watch",
+    "pack": "npm run build && vsce package",
+    "release": "npm run build && vsce publish"
+  },
+  "dependencies": {
+    "@function-decorator/ts-plugin-function-decorator": "1.0.0"
+  }
+}
