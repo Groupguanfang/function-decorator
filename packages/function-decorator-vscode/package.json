@@ -21,6 +21,9 @@
     "Other"
   ],
   "main": "./dist/client.js",
+  "files": [
+    "dist"
+  ],
   "engines": {
     "vscode": "^1.87.0"
   },
