@@ -1,4 +1,5 @@
 import type { Linter } from 'eslint'
+import { parse } from './parser'
 
 export function transformTSParser(parser: Linter.Parser): Linter.Parser {
   // eslint-disable-next-line ts/ban-ts-comment
@@ -12,24 +13,21 @@ export function transformTSParser(parser: Linter.Parser): Linter.Parser {
         return oldParseForESLint(...args)
       }
       catch (error) {
+        // Filter out the error if it's because of a fn decorator
+
         // eslint-disable-next-line ts/ban-ts-comment
         // @ts-expect-error
-        if ((error.message || '').includes('Decorators are not valid here')) {
-          if (typeof args[0] === 'string') {
-            // eslint-disable-next-line regexp/no-super-linear-backtracking
-            const result = args[0].replace(/(@\w+)(?=[\s\S]*function)/g, (match) => {
-              return match.replace(/\S/g, ' ')
-            })
-            args[0] = result
-          }
-          return oldParseForESLint(...args)
+        if ((error.message || '').includes('Decorators are not valid here') || (error.message || '').includes('Declaration or statement expected')) {
+          if (typeof args[0] === 'string')
+            return parse(args[0], oldParseForESLint, args)
+          throw error
         }
         throw error
       }
     },
   }
-  parser = result
-  return result
+  parser = result as any
+  return result as Linter.Parser
 }
 
 export function overrideParser(config: Linter.Config): Linter.Config {

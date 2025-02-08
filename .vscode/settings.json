@@ -48,5 +48,6 @@
   ],
   "interline-translate.knownPopularWordCount": 6000,
   "iconify.annotations": true,
-  "iconify.inplace": true
+  "iconify.inplace": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

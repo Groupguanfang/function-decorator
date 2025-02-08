@@ -7,7 +7,7 @@ import { createUnplugin } from 'unplugin'
 
 export const unpluginFactory: UnpluginFactory<Options | undefined> = (options = {}) => {
   if (!options.include)
-    options.include = ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx']
+    options.include = ['**/*.ts', '**/*.tsx']
 
   const filter = createFilter(options?.include, options?.exclude)
   return {

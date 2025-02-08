@@ -1,4 +1,4 @@
-export { type EnhancedProgramResult, enhanceProgram } from './enhancer'
+export { type EnhancedProgramResult, enhanceProgram, generateDecorators } from './enhancer'
 export { transformFnDecoratorProgram } from './transformer'
 export {
   deepRemovePosition,

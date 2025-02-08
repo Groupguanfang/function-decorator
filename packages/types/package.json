@@ -1,11 +1,13 @@
 {
-  "name": "@function-decorator/eslint",
+  "name": "@function-decorator/types",
   "type": "module",
-  "version": "0.0.1",
-  "description": "Eslint support for function decorator.",
+  "version": "1.0.0",
+  "description": "Runtime types for function decorator.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "keywords": [
-    "es-project-template"
+    "function-decorator",
+    "decorator",
+    "types"
   ],
   "exports": {
     ".": {
@@ -19,15 +21,10 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
-    "watch": "tsup -w"
+    "watch": "tsup -w",
+    "prepublishOnly": "tsup"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "@function-decorator/oxc-parser": "workspace:*",
-    "eslint": "^9.19.0",
-    "magic-string": "^0.30.17",
-    "oxc-parser": "^0.48.2"
   }
 }

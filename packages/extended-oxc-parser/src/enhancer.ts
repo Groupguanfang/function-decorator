@@ -1,4 +1,4 @@
-import type { Decorator, MagicString, Program } from 'oxc-parser'
+import type { Decorator, Function, MagicString, Program } from 'oxc-parser'
 import { parseSync } from 'oxc-parser'
 import { deepWalk, getPreviousNodes } from './walk'
 
@@ -11,9 +11,10 @@ declare module '@oxc-project/types' {
 export interface EnhancedProgramResult {
   program: Program
   magicString: MagicString
+  onGenerateDecorators?: (decorators: Decorator[], node: Function) => void
 }
 
-export function enhanceProgram<TResult extends EnhancedProgramResult>({ program, magicString, ...rest }: TResult): TResult {
+export function enhanceProgram<TResult extends EnhancedProgramResult>({ program, magicString, onGenerateDecorators, ...rest }: TResult): TResult {
   const newProgram = program
   deepWalk(newProgram, {
     Function(node) {
@@ -23,6 +24,7 @@ export function enhanceProgram<TResult extends EnhancedProgramResult>({ program,
       if (!text)
         return
       node.decorators = generateDecorators(text, lastPreviousNode ? lastPreviousNode.end : 0, node.start)
+      onGenerateDecorators?.(node.decorators, node)
     },
   })
   return { program: newProgram, magicString, ...rest } as TResult
@@ -30,7 +32,7 @@ export function enhanceProgram<TResult extends EnhancedProgramResult>({ program,
 
 const generateSpace = (length: number): string => ' '.repeat(length)
 
-function generateDecorators(text: string, decoratorsStart: number, _decoratorsEnd: number): Decorator[] {
+export function generateDecorators(text: string, decoratorsStart: number, _decoratorsEnd: number): Decorator[] {
   const decorators: Decorator[] = []
   // 使用正则表达式匹配装饰器
   const decoratorPattern = /@\w+(?:\([^)]*\))?/g

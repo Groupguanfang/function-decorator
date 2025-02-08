@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+    "jsx": "react",
     "lib": ["DOM", "ESNext"],
     "module": "ESNext",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "types": ["@function-decorator/types", "vite/client"]
   },
-  "include": ["./**/*.ts"]
+  "include": ["./**/*.ts", "./**/*.tsx"]
 }
