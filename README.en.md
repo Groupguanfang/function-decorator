@@ -1,68 +1,68 @@
 # Function Decorator Support
 
-[English](./README.en.md) | 简体中文
+[简体中文](./README.md) | English
 
-这是一个用于给现有的TypeScript添加`函数装饰器`支持的仓库。
+This is a repository for adding `function decorator` support to existing TypeScript.
 
-## 🎯 项目目标
+## 🎯 Project Goals
 
-很简单: 支持`有名字的函数`添加装饰器。如：
+It's simple: support `named functions` with decorators, such as:
 
 ```ts
 function hello(target: (...args: any[]) => any, ctx: FunctionDecoratorContext) {
   console.log('Decorated!')
 }
 
-// 正确的用法
+// Correct usage
 @hello
 export function test() {
   console.log('hello')
 }
 
-// 错误的用法
+// Incorrect usage
 function test() {
-  @hello // 这是不被允许的❗️
+  @hello // This is not allowed❗️
   return function () {}
 }
 ```
 
-你可以看到，hello函数就是一个装饰器。装饰器接收了两个参数：
+As you can see, the `hello` function is a decorator. The decorator receives two parameters:
 
-- target: 被装饰的函数
-- ctx: 装饰器上下文
+- target: the function being decorated
+- ctx: decorator context
 
-装饰器的签名，参考了`TC39`的[函数和object literal装饰器提案](https://github.com/tc39/proposal-function-and-object-literal-element-decorators)，如下：
+The signature of the decorator is based on the `TC39` [proposal for function and object literal decorators](https://github.com/tc39/proposal-function-and-object-literal-element-decorators), as follows:
 
 ```ts
 interface FunctionDecoratorContext {
   kind: 'function'
-  // 被装饰的函数名
+  // Name of the decorated function
   name: string
-  // 被装饰的函数的元数据
+  // Metadata of the decorated function
   metadata: object
-  // 添加初始化器，将在被装饰函数调用前调用
+  // Add an initializer to be called before the decorated function is invoked
   addInitializer: (initializer: () => void) => void
 }
 
 type FunctionDecorator = (
-  // 被装饰的函数
+  // Function being decorated
   target: (...args: any[]) => any,
-  // 装饰器上下文
+  // Decorator context
   ctx: FunctionDecoratorContext,
 ) => void
 ```
 
-只要遵循这个签名的函数都可以作为一个函数装饰器来使用。
+Any function that follows this signature can be used as a function decorator.
 
 ## ✒️ ESLint
 
-仓库提供了一个eslint包，如果遇到eslint报错提示“装饰器不能出现在这里”，可以安装这个包来解决。
+The repository provides an ESLint package. If you encounter an ESLint error stating "decorators cannot appear here," you can install this package to resolve it.
 
 ```bash
 pnpm add -D @function-decorator/eslint
 ```
 
-然后修改你的eslint配置，如果使用antfu的`@antfu/eslint-config`，那么只需要在`eslint.config.js`中添加一点点东西即可：
+Then modify your ESLint configuration. If you're using antfu's `@antfu/eslint-config`, you just need to add a little bit to your `eslint.config.js`:
 
 ```js
 import antfu from '@antfu/eslint-config'
@@ -71,23 +71,23 @@ import { overrideParser } from '@function-decorator/eslint'
 export default antfu().override('antfu/typescript/parser', overrideParser)
 ```
 
-这相当于重写了`@antfu/eslint-config`的typescript解析器对象。
+This effectively overrides the TypeScript parser object of `@antfu/eslint-config`.
 
 ## 🍽️ TypeScript
 
-如果遇到`TS2306`错误，仓库提供了一个vscode插件以供忽略这个错误，直接从vscode插件市场安装即可：
+If you encounter a `TS2306` error, the repository provides a VSCode plugin to ignore this error, which you can install directly from the VSCode marketplace:
 
-VSCode插件市场链接：[https://marketplace.visualstudio.com/items?itemName=NailyZero.vscode-naily-function-decorator](https://marketplace.visualstudio.com/items?itemName=NailyZero.vscode-naily-function-decorator)
+VSCode Marketplace Link: [https://marketplace.visualstudio.com/items?itemName=NailyZero.vscode-naily-function-decorator](https://marketplace.visualstudio.com/items?itemName=NailyZero.vscode-naily-function-decorator)
 
-## 🧩 插件
+## 🧩 Plugin
 
-仓库提供了一个`unplugin`插件，支持`webpack`、`vite`、`rollup`、`esbuild`、`rolldown`、`rspack`等构建工具。
+The repository provides an `unplugin` plugin that supports build tools like `webpack`, `vite`, `rollup`, `esbuild`, `rolldown`, `rspack`, etc.
 
 ```bash
 pnpm add -D @function-decorator/unplugin
 ```
 
-然后你就可以在各种构建工具的配置文件中使用该插件了：
+Then you can use this plugin in various build tool configuration files:
 
 <details>
 <summary>Vite</summary><br>
@@ -185,9 +185,9 @@ build({
 
 <br></details>
 
-## 🧠 启发
+## 🧠 Inspiration
 
-感谢以下仓库，让我有了这个想法，并基本实现了它：
+Thanks to the following repositories for inspiring this idea and helping to bring it to fruition:
 
 - [unplugin](https://github.com/unjs/unplugin)
 - [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint)
