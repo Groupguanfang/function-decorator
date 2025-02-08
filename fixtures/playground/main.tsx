@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Entry } from './decorators/entry'
+import { useChildren } from './children'
 
 if (!Symbol.metadata)
   // eslint-disable-next-line ts/ban-ts-comment
@@ -7,15 +7,17 @@ if (!Symbol.metadata)
   Symbol.metadata = Symbol('metadata')
 
 @Entry('#app')
-function App(): React.ReactNode {
-  const [count, setCount] = useState(0)
-  if (!count)
-    return
+export function App(): React.FC {
+  return () => {
+    const [count, setCount] = useState(0)
+    const Children = useChildren()
 
-  return (
-    <div onClick={() => setCount(count + 1)}>
-      Hello World,
-      {count}
-    </div>
-  )
+    return (
+      <div onClick={() => setCount(count + 1)}>
+        Hello World,
+        {count}
+        <Children />
+      </div>
+    )
+  }
 }

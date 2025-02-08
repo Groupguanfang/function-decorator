@@ -11,6 +11,7 @@
     "access": "public"
   },
   "scripts": {
+    "play": "pnpm -F playground dev",
     "lint": "eslint .",
     "postinstall": "npx simple-git-hooks",
     "test": "vitest --coverage --ui"
