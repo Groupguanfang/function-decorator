@@ -1,4 +1,4 @@
-# Function Decorator
+# Function Decorator Support
 
 这是一个用于给现有的TypeScript添加`函数装饰器`支持的仓库。
 
@@ -183,3 +183,9 @@ build({
 
 <br></details>
 
+## 🧠 启发
+
+感谢以下仓库，让我有了这个想法，并基本实现了它：
+
+- [unplugin](https://github.com/unjs/unplugin)
+- [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint)
